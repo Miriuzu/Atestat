@@ -1,4 +1,4 @@
-﻿namespace mysqllogin
+﻿namespace Atestat
 {
     partial class Form1
     {
@@ -28,65 +28,69 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtuser = new System.Windows.Forms.TextBox();
             this.txtpass = new System.Windows.Forms.TextBox();
-            this.btnlogin = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(183, 156);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 34);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Autentificare";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(225, 71);
+            this.label1.Location = new System.Drawing.Point(57, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Username";
+            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nume de Utilizator";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(225, 157);
+            this.label2.Location = new System.Drawing.Point(57, 121);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "password";
+            this.label2.Size = new System.Drawing.Size(37, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Parola";
             // 
             // txtuser
             // 
-            this.txtuser.Location = new System.Drawing.Point(397, 64);
+            this.txtuser.Location = new System.Drawing.Point(200, 43);
             this.txtuser.Name = "txtuser";
-            this.txtuser.Size = new System.Drawing.Size(117, 20);
-            this.txtuser.TabIndex = 2;
+            this.txtuser.Size = new System.Drawing.Size(100, 20);
+            this.txtuser.TabIndex = 3;
+            this.txtuser.Text = "$ ";
+            this.txtuser.TextChanged += new System.EventHandler(this.txtuser_TextChanged);
             // 
             // txtpass
             // 
-            this.txtpass.Location = new System.Drawing.Point(401, 150);
+            this.txtpass.Location = new System.Drawing.Point(200, 121);
             this.txtpass.Name = "txtpass";
-            this.txtpass.Size = new System.Drawing.Size(131, 20);
-            this.txtpass.TabIndex = 3;
-            // 
-            // btnlogin
-            // 
-            this.btnlogin.Location = new System.Drawing.Point(351, 207);
-            this.btnlogin.Name = "btnlogin";
-            this.btnlogin.Size = new System.Drawing.Size(94, 26);
-            this.btnlogin.TabIndex = 4;
-            this.btnlogin.Text = "Login";
-            this.btnlogin.UseVisualStyleBackColor = true;
-            this.btnlogin.Click += new System.EventHandler(this.btnlogin_Click);
+            this.txtpass.Size = new System.Drawing.Size(100, 20);
+            this.txtpass.TabIndex = 4;
+            this.txtpass.Text = "2";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(657, 330);
-            this.Controls.Add(this.btnlogin);
+            this.ClientSize = new System.Drawing.Size(503, 242);
             this.Controls.Add(this.txtpass);
             this.Controls.Add(this.txtuser);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -96,11 +100,11 @@
 
         #endregion
 
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtuser;
         private System.Windows.Forms.TextBox txtpass;
-        private System.Windows.Forms.Button btnlogin;
     }
 }
 
