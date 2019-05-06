@@ -37,7 +37,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(183, 156);
+            this.button1.Location = new System.Drawing.Point(210, 182);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 34);
             this.button1.TabIndex = 0;
@@ -53,7 +53,6 @@
             this.label1.Size = new System.Drawing.Size(93, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nume de Utilizator";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -70,16 +69,14 @@
             this.txtuser.Name = "txtuser";
             this.txtuser.Size = new System.Drawing.Size(100, 20);
             this.txtuser.TabIndex = 3;
-            this.txtuser.Text = "$ ";
-            this.txtuser.TextChanged += new System.EventHandler(this.txtuser_TextChanged);
             // 
             // txtpass
             // 
             this.txtpass.Location = new System.Drawing.Point(200, 121);
             this.txtpass.Name = "txtpass";
+            this.txtpass.PasswordChar = '*';
             this.txtpass.Size = new System.Drawing.Size(100, 20);
             this.txtpass.TabIndex = 4;
-            this.txtpass.Text = "2";
             // 
             // Form1
             // 
@@ -92,7 +89,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Athena";
             this.ResumeLayout(false);
             this.PerformLayout();
 

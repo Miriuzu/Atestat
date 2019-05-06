@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,59 +16,60 @@ namespace Atestat
 {
     public partial class Form1 : Form
     {
+        private static readonly HttpClient client = new HttpClient();
+
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public void onReturn()
         {
-
+            txtuser.Text = "";
+            txtpass.Text = "";
+            Show();
         }
 
-        public class RootObject
+        private async void button1_Click(object sender, EventArgs e)
         {
-            public int id { get; set; }
-            public string username { get; set; }
-            public string password { get; set; }
-            public string email { get; set; }
-            public int admin { get; set; }
-        }
-
-        RootObject obj;
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            string password = txtuser.Text;
-
-            string html = string.Empty;
-            string url = @"http://localhost:8080/searchu?username=" + txtuser.Text;
-
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-
-            request.AutomaticDecompression = DecompressionMethods.GZip;
-
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
-            using (Stream stream = response.GetResponseStream())
-            using (StreamReader reader = new StreamReader(stream))
+            if (txtuser.Text == "")
             {
-                html = reader.ReadToEnd();
+                MessageBox.Show("Insert the username, please.");
             }
-            Console.WriteLine(html);
+            else if (txtpass.Text == "")
+            {
+                MessageBox.Show("Insert the password, please.");
+            }
+            else
+            {
+                try
+                {
+                    string res = await client.GetStringAsync("http://localhost:3000/login?name=" + txtuser.Text + "&password=" + txtpass.Text);
+                    if (Int32.Parse(res) >= 0)
+                    {
+                        Hide();
+                        if (res == "1")
+                        {
+                            AdminForm admin = new AdminForm(this);
+                            admin.Show();
+                        }
+                        else
+                        {
+                            UserForm user = new UserForm(this);
+                            user.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong password or username.");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Server is down.");
+                }
 
-
-            var resultscan = JsonConvert.DeserializeObject<List<RootObject>>(html);
-            obj = resultscan[0];
-
-
-            
-        }
-
-        private void txtuser_TextChanged(object sender, EventArgs e)
-        {
-
+            }
         }
     }
 }
